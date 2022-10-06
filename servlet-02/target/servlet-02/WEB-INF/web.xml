@@ -17,5 +17,22 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ReqServlet</servlet-name>
+        <servlet-class>com.tianyi.ReqServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ReqServlet</servlet-name>
+        <url-pattern>/req</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>RegisterServlet</servlet-name>
+        <servlet-class>com.tianyi.RegisterServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RegisterServlet</servlet-name>
+        <url-pattern>/register</url-pattern>
+    </servlet-mapping>
 
 </web-app>
