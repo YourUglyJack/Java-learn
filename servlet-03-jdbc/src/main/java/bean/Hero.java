@@ -26,6 +26,16 @@ public class Hero {
         return hp;
     }
 
+    public Hero() {
+    }
+
+    public Hero(int id, String name, float hp, int damage) {
+        this.id = id;
+        this.name = name;
+        this.hp = hp;
+        this.damage = damage;
+    }
+
     public void setHp(float hp) {
         this.hp = hp;
     }
