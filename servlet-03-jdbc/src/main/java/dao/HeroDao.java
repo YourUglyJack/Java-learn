@@ -99,6 +99,24 @@ public class HeroDao {
         return hero;
     }
 
+    public void update(Hero hero) {
+
+        String sql = "update hero set `name`= ?, hp = ? , damage = ? where id = ?";
+        try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+
+            ps.setString(1, hero.name);
+            ps.setFloat(2, hero.hp);
+            ps.setInt(3, hero.damage);
+            ps.setInt(4, hero.id);
+
+            ps.execute();
+
+        } catch (SQLException e) {
+
+            e.printStackTrace();
+        }
+
+    }
 
     public List<Hero> list(int start, int count) {
         List<Hero> heros = new ArrayList<Hero>();
