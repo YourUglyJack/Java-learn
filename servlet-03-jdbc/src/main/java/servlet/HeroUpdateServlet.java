@@ -20,7 +20,6 @@ public class HeroUpdateServlet extends HttpServlet {
         hero.setHp(Float.parseFloat(req.getParameter("hp")));
         hero.setDamage(Integer.parseInt(req.getParameter("damage")));
         hero.setName(req.getParameter("name"));
-        System.out.println(hero.getName());
         new HeroDao().update(hero);
 
         resp.sendRedirect(req.getContextPath() + "/listHero");

@@ -48,7 +48,7 @@ public class HeroDao {
     public void add(Hero hero) {
 
         String sql = "insert into hero values(null,?,?,?)";
-        try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+        try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);) {
             ps.setString(1, hero.name);
             ps.setFloat(2, hero.hp);
             ps.setInt(3, hero.damage);
@@ -58,8 +58,10 @@ public class HeroDao {
             ResultSet rs = ps.getGeneratedKeys();
             if (rs.next()) {
                 int id = rs.getInt(1);
+                System.out.println(id);
                 hero.id = id;
             }
+            System.out.println(hero.getId());
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -88,6 +90,7 @@ public class HeroDao {
 
             if (rs.next()) {
                 hero = new Hero();  // id,name,hp,damage
+                hero.id = id;
                 hero.name = rs.getString("name");
                 hero.hp = rs.getFloat("hp");
                 hero.damage = rs.getInt("damage");
@@ -102,7 +105,7 @@ public class HeroDao {
     public void update(Hero hero) {
 
         String sql = "update hero set `name`= ?, hp = ? , damage = ? where id = ?";
-        try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql);) {
+        try (Connection c = getConnection(); PreparedStatement ps = c.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);) {
 
             ps.setString(1, hero.name);
             ps.setFloat(2, hero.hp);
@@ -132,7 +135,7 @@ public class HeroDao {
             while (rs.next()) {
                 int id = rs.getInt("id");
                 String name = rs.getString("name");
-                Float hp = rs.getFloat("hp");
+                float hp = rs.getFloat("hp");
                 int damage = rs.getInt("damage");
 
                 heros.add(new Hero(id, name, hp, damage));

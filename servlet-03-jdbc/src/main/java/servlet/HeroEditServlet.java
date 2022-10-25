@@ -14,9 +14,7 @@ public class HeroEditServlet extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
 
         int id = Integer.parseInt(req.getParameter("id"));
-
         Hero hero = new HeroDao().get(id);  // 获取hero对象
-
         StringBuffer fmt = new StringBuffer();
         resp.setContentType("text/html;charset=utf-8");
 
