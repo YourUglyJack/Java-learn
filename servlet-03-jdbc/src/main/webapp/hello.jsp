@@ -11,3 +11,12 @@
 hello, JSP
 <br>
 <%=new Date().toLocaleString()%>
+<br>
+page:<%=page%>
+<br>
+this:<%=this%>
+
+
+<jsp:include page="footer.jsp">
+    <jsp:param name="year" value="2022"/>
+</jsp:include>
